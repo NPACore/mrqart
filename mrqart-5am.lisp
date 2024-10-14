@@ -24,3 +24,9 @@
   (is (mrqart::dicom-fname-p "abc.IMA"))
   (is (not (mrqart::dicom-fname-p "text.log")))
   (is (not (mrqart::dicom-fname-p "MR_dcm_IMA_thing.txt"))))
+
+(test test-seqname
+  (is (mrqart::dcmval-sequence-name "*fm2d2r") "GRFM")
+  (let ((acq-dict )
+        (testdcm-res (mrqart:get-dcm-values *testdcm* (dict :Acq )))))
+  (is (mrqart::dcmval-sequence-name (access testdcm-res :SequenceName))))

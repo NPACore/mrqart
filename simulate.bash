@@ -15,6 +15,6 @@ mkdir -p $sim_dir
 find "$src_dir" -type f,l  | while read f; do
   tr=$(bc -l <<< $(dicom_hinfo -no_name -tag 0018,0080 "$f")/1000)
   echo "# sleeping $tr after adding $f to $sim_dir"
-  ln -s "$f" "$sim_dir"
+  cp "$f" "$sim_dir"
   sleep $tr
 done
