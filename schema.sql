@@ -1,34 +1,31 @@
 -- acquisition. time id
 create table acq (
   param_id integer, -- join to session-consitent settings
-  AcqTime timestamp,
+  AcqTime text,
+  AcqDate text,
+  SeiresNumber text,
   SubID text,
-  iPAT text,
-  B0Shim text,
   Operator text
 );
 
 -- acq params that should match across sessions
 create table acq_param (
-  is_ideal boolean,
+  is_ideal timestamp,
   Project text,
   SequenceName text,
   -- TODO: should this be json blob? to extend easier?
+  iPAT text,
+  Comments text,
   SequenceType text,
-  PED text,
-  TR numeric,
-  TE numeric,
+  PED_major text,
+  TR text,
+  TE text,
   Matrix text,
   PixelResol text,
   BWP text,
   BWPPE text,
   FA text,
   TA text,
-  FoV text,
-  MB text,
-  FoVShift text,
-  SlcLeakBlk text,
-  SeqMode text,
-  Coil text,
-  ShimMode text
+  FoV text
+  -- TODO: add shim settings from CSA
 );

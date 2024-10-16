@@ -49,6 +49,10 @@
   (list)
   "list of protocol + B0shim to track shim groups. To be reset for each new project.")
 
+(defvar *sequences*
+  (dict)
+  "MR sequences. Key is seqnumber. value is dict with count (n dcm), paramaters, ideal parameters")
+
 
 ;; ** dealing with dicoms
 ;; using AFNI's dicom_hinfo tool instead of trying to read ourselves
@@ -149,6 +153,13 @@
 
 ;; ---- database
 ;; TODO
+(defmacro db-query (query &rest params)
+  `(dbi:fetch-all (dbi:execute (dbi:prepare *db* (sxql:yield ,query)) ,@params)))
+(defun insert-new-session ())
+(defun find-ideal-session (proj seqname)
+  (db-query (sxql:select :* (sxql:from :acq_param)
+                                                         (sxql:where (:and (:like :Project proj)
+                                                                           (:like :SequenceName seqname)))) (list proj seqname)))
 
 ;; ---- webserver
 (defvar *http-port* 8080 "port to server http over")

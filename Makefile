@@ -1,3 +1,8 @@
+all: sim/src mrqart.sqlite3
+
+mrqart.sqlite3:
+	sqlite3 $@ < schema.sql
+
 sim/src: EPI_first10.zip sim/
 	unzip -d $@ EPI_first10.zip
 
