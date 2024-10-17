@@ -8,9 +8,9 @@ rem set window size for ASCII art
 mode con: cols=100 lines=50
 
 rem specify settings
-@SET DICOM_PATH=\\10.48.88.XXX\FIRMM_DICOM
-@SET FIRMM_USER=XXXXX
-@SET FIRMM_SAMBA_PASS=XXXX
+@SET DICOM_PATH=\\10.48.88.92\dicomstream
+@SET FIRMM_USER=mrqart
+@SET FIRMM_SAMBA_PASS=DependMagnetBit
 
 rem delete mount if it already exists, mount drive
 net use %DICOM_PATH% /Delete

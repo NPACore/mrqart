@@ -1,0 +1,38 @@
+* Simulations
+
+** 20241017
+Tested protcol stream after running ~../config/session_start.bat~ on MR console.
+
+monitored with
+#+begin_src bash
+fsnotifywatch -rf /data/dicomstream/
+#+end_src
+
+ * 6,7 is 3d mprage raw and corrected -- sent interliaved
+ * 8,9 is mag phase
+ * 10 is fmri. not mosaic. instantly sends
+ * sends 10 and 11 interleaved? -- multiecho
+ * 12,3 is spin echo
+ * 15 dwi AP
+
+#+begin_src shell
+  du -hcs /data/dicomstream/
+#+end_src
+
+#+RESULTS:
+| 2.6G | /data/dicomstream/ |
+| 2.6G | total              |
+
+#+begin_src sh
+  find /data/dicomstream/ -iname '*.dcm' -print -quit
+#+end_src
+
+#+RESULTS:
+: /data/dicomstream/20241016.MRQART_test.24.10.16_16_50_16_DST_1.3.12.2.1107.5.2.43.67078/001_000015_007107.dcm
+
+#+begin_src shell
+  find /data/dicomstream/ -iname '*.dcm' | wc -l
+#+end_src
+
+#+RESULTS:
+: 9616
