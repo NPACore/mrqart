@@ -1,0 +1,1 @@
+dicom_hdr /Volumes/Hera/Raw/MRprojects/Habit/2024.10.04-14.30.36/12049_20241004/RewardedAntisaccade_704x752.17/MR.1.3.12.2.1107.5.2.43.167046.2024100415082677814782624 | grep -E "(RepetitionTime|EchoTime|Matrix|PixelSpacing|Field|FlipAngle|Bandwidth|Sequence|Project|Comments|PED|AcquisitionTime)"
