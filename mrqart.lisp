@@ -23,6 +23,8 @@
 ;; ** Lisp packaging
 ;; This originally started as a script ~(in-package :ciel-user)~. Switching to ~defpackage~ meant losing the original ~:local-nicknames~ imployed by ciel. Those have been copied back in. ( https://github.com/ciel-lang/CIEL/issues/81)
 
+; #-ciel (ql:quickload :ciel)
+
 (defpackage mrqart
   (:use :cl :ciel)
   (:local-nicknames
@@ -31,7 +33,10 @@
    (:routes :easy-routes))
   (:export get-dcm-values *dcmtags*))
 
-;; #-ciel (ql:quickload :ciel)
+; packages not in ciel
+(ql:quickload "websocket-driver")
+(ql:quickload "clack")
+
 (in-package :mrqart)
 
 
@@ -141,7 +146,7 @@
     ;; confirmed in test-dcm-order-invariant
     (prin1 tagvals)
     (mapcar #'(lambda (k v) (setf (access tag_val k) v))
-            (hash-table-keys tagdict)`/
+            (hash-table-keys tagdict)
             (str:split "\\t" tagvals))
     tag_val))
 
