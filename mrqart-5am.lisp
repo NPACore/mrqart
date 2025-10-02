@@ -30,3 +30,6 @@
   (let ((acq-dict )
         (testdcm-res (mrqart:get-dcm-values *testdcm* (dict :Acq )))))
   (is (mrqart::dcmval-sequence-name (access testdcm-res :SequenceName))))
+
+(test test-csa
+  (is (mrqart::read-csa *testdcm*) (dict :iPAT 2)))
